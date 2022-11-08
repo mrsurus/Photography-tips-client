@@ -1,4 +1,5 @@
 import Allservices from "../Component/AllServices/Allservices";
+import CardDetails from "../Component/CardDetails/CardDetails";
 import Home from "../Component/Home/Home";
 import Main from "../Layouts/Main";
 
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
                 path: '/allservices',
                 element: <Allservices></Allservices>,
                 loader: () => fetch('http://localhost:5000/allservices')
+            },
+            {
+                path: '/allservices/:id',
+                element: <CardDetails></CardDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/allservices/${params.id}`)
             }
         ]
     }
