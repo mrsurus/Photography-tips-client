@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Cricket",
+        "service_id": "01",
+        "details": "Many big magazine companies and sports websites are paying handsome money for cricket photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture cricket photography. We’ll talk about the top and professional cricket photography tips below so keep reading!",
+        "price": 45,
+        "rating": 4.5,
+        "img": "https://thumbs.dreamstime.com/b/cricket-bat-ball-26560801.jpg"
+    },
+    {
+        "title": "Football",
+        "service_id": "02",
+        "details": "Many big magazine companies and sports websites are paying handsome money for Football photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture Football photography. We’ll talk about the top and professional Football photography tips below so keep reading!",
+        "price": 50,
+        "rating": 5,
+        "img": "https://d2cx26qpfwuhvu.cloudfront.net/aberdeen/wp-content/uploads/2018/10/29003147/AT5A8301.jpg"
+    },
+    {
+        "title": "Tennis",
+        "service_id": "03",
+        "details": "Many big magazine companies and sports websites are paying handsome money for Tennis photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture Tennis photography. We’ll talk about the top and professional Tennis photography tips below so keep reading!",
+        "price": 45,
+        "rating": 4.5,
+        "img": "https://photoresources.wtatennis.com/photo-resources/2019/08/15/dbb59626-9254-4426-915e-57397b6d6635/tennis-origins-e1444901660593.jpg?width=1200&height=630"
+    },
+    {
+        "title": "Hokey",
+        "service_id": "04",
+        "details": "Many big magazine companies and sports websites are paying handsome money for Hokey photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture Hokey photography. We’ll talk about the top and professional Hokey photography tips below so keep reading!",
+        "price": 40,
+        "rating": 4.0,
+        "img": "https://en.banglatribune.com/contents/cache/images/800x0x1/uploads/media/2018/09/07/ecd272109412bfc15fcb2881e2c2a085-5b92424cd0d14.jpg"
+    },
+    {
+        "title": "BasketBall",
+        "service_id": "05",
+        "details": "Many big magazine companies and sports websites are paying handsome money for BasketBall photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture BasketBall photography. We’ll talk about the top and professional BasketBall photography tips below so keep reading!",
+        "price": 60,
+        "rating": 4.5,
+        "img": "https://www.sportsnet.ca/wp-content/uploads/2021/03/Basketball-generic.jpg"
+    },
+    {
+        "title": "Chess",
+        "service_id": "06",
+        "details": "Many big magazine companies and sports websites are paying handsome money for Chess photos. So, there is scope for photographers to earn from this too. For this all you need to do is capture Chess photography. We’ll talk about the top and professional Chess photography tips below so keep reading!",
+        "price": 50,
+        "rating": 5,
+        "img": "https://images.chesscomfiles.com/uploads/v1/article/27319.746c2259.668x375o.c6cf8543e2d5@2x.png"
+    }
+]

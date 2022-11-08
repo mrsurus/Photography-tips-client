@@ -1,3 +1,4 @@
+import Allservices from "../Component/AllServices/Allservices";
 import Home from "../Component/Home/Home";
 import Main from "../Layouts/Main";
 
@@ -10,7 +11,13 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/servicesh')
+            },
+            {
+                path: '/allservices',
+                element: <Allservices></Allservices>,
+                loader: () => fetch('http://localhost:5000/allservices')
             }
         ]
     }
