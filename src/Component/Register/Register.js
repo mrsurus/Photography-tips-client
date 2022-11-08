@@ -3,19 +3,26 @@ import { Link } from 'react-router-dom';
 import { AuthContext,  } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const {createUser,updateNamePhoto} = useContext(AuthContext)
 
     const handleSignUp = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value
+        const name = form.name.value;
+        const photo = form.photo.value;
+        
+      
 
         createUser(email, password)
             .then(res => {
                 const user = res.user
                 console.log(user);
                 alert('sign up succesful')
+                updateNamePhoto(name, photo)
+                .then( res => console.log('display uppdates'))
+                .catch( err => console.log(err))
             })
             .catch(err => console.log(err))
     }
@@ -36,6 +43,12 @@ const Register = () => {
                                 <span className="label-text">Name</span>
                             </label>
                             <input type="text" name='name' placeholder="Your Name" className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo URL</span>
+                            </label>
+                            <input type="text" name='photo' placeholder="Your Photo URL" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
