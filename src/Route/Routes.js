@@ -1,3 +1,4 @@
+import AddService from "../Component/AddService/AddService";
 import Allservices from "../Component/AllServices/Allservices";
 import CardDetails from "../Component/CardDetails/CardDetails";
 import Home from "../Component/Home/Home";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
                 path: '/update/:id',
                 element: <UpdateReview></UpdateReview>,
                 loader: ({params})=> fetch(`http://localhost:5000/review/${params.id}`)
+            },
+            {
+                path:'/addservice',
+                element: <AddService></AddService>
             }
         ]
     }

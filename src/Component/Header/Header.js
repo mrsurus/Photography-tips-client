@@ -24,7 +24,7 @@ const Header = () => {
                        {
                         user?.email && <>
                          <Link className='bg-violet-200 py-2 my-2 text-center font-semibold' to='myreview'>My Review</Link>
-                        <Link className='bg-violet-200 py-2 my-2 text-center font-semibold' to='addservices'>Add Services</Link>
+                        <Link className='bg-violet-200 py-2 my-2 text-center font-semibold' to='addservice'>Add Services</Link>
                         </>
                        }
                     </ul>
@@ -39,7 +39,7 @@ const Header = () => {
                       user?.email && 
                       <>
                       <Link className=' px-2 mx-3 text-white text-center  text-xl' to='myreview'>My Review</Link>
-                    <Link className=' px-2 mx-3 text-white text-center  text-xl' to='addservices'>Add Services</Link>
+                    <Link className=' px-2 mx-3 text-white text-center  text-xl' to='addservice'>Add Services</Link>
                       </>
                     }
                 </ul>
