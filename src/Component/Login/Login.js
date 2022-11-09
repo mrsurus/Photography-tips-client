@@ -1,9 +1,10 @@
+import { data } from 'autoprefixer';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext)
+    const {logIn,googlesignIn} = useContext(AuthContext)
 
     const handleLogIn = (e) => {
         e.preventDefault()
@@ -16,8 +17,11 @@ const Login = () => {
             console.log(user);
         })
         .catch(err => console.log(err))
-
-
+    }
+    const handleGoogleSingIn = ()=>{
+        googlesignIn()
+        .then(res => console.log(res.user))
+        .catch(data => console.log(data))
     }
     return (
         <div>
@@ -48,7 +52,9 @@ const Login = () => {
                             <input className='btn' type="submit" value="LogIn" />
                         </div>
                         <p className='text-center'>New to Our Website? <Link className='text-orange-500 font-bold' to='/register'>Sign Up</Link></p>
+                        <button onClick={handleGoogleSingIn} className='btn btn-primary text-center my-10'>LogIn With Google</button>
                     </form>
+                    
                     </div>
                 </div>
             </div>
