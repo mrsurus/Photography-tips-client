@@ -42,6 +42,11 @@ const CardDetails = () => {
             },
             body: JSON.stringify(reviewInfo)
         })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            form.reset()
+        })
 
         
     }
@@ -70,7 +75,7 @@ const CardDetails = () => {
                 {user?.email ? <> <form onSubmit={handlePlaceOrder}>
                     <h2 className='text-2 xl font-semibold text-center mt-10'>Write review for {title}</h2>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 py-5'>
-                        <input name='email' type="text" value={user?.displayName} placeholder="Your Email" className="input input-bordered w-full " readOnly />
+                        <input name='email' type="text" value={user?.displayName? user.displayName:''} placeholder="Your Email" className="input input-bordered w-full " readOnly />
                     </div>
                     <textarea name='review' className='textarea textarea-bordered my-5 h-48 text-xl w-full' placeholder='Write your review here ...'></textarea>
                     <input className='btn btn-primary ' type="submit" name="" value='Submit Your review' />
