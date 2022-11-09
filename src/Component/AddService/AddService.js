@@ -1,5 +1,6 @@
 import { data } from 'autoprefixer';
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const AddService = () => {
 
@@ -29,6 +30,12 @@ const AddService = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            Swal.fire(
+                'Good job!',
+                'Service added Succesfull!',
+                'success'
+              )
+              form.reset()
         })
         
     }

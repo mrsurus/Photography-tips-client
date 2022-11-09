@@ -1,10 +1,12 @@
-import { fromJSON } from 'postcss';
+
 import React, { useState } from 'react';
-import { Navigate, useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateReview = () => {
     const storedReview = useLoaderData()
     const [editedReview, setEditedReview] = useState(storedReview)
+    const navigate = useNavigate()
 
     const handleSubmit= (e)=> {
         e.preventDefault()
@@ -13,7 +15,7 @@ const UpdateReview = () => {
         const data = {
             review:review
         }
-        
+        setEditedReview(data)
         fetch(`http://localhost:5000/review/${storedReview._id}`,{
             method: 'PUT',
             headers: {
@@ -24,10 +26,15 @@ const UpdateReview = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if(data.modifiedCount >0){
-                <Navigate to='/myreview'></Navigate>
+            if(data.modifiedCount > 0){
+                
             }
-            
+            Swal.fire(
+                'Good job!',
+                'Review Update Succesfull!',
+                'success'
+              )
+              navigate('/myreview')
         })
 
     }

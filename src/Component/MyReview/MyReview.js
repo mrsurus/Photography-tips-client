@@ -1,5 +1,6 @@
 import { data } from 'autoprefixer';
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewSection from './MyReviewSection';
 
@@ -24,6 +25,11 @@ const MyReview = () => {
                 const remainig = myReview?.filter(mr => mr._id !== id)
                 setMyReview(remainig)
             }
+            Swal.fire(
+                'Good job!',
+                'Delete Succesfull!',
+                'success'
+              )
         }) 
     }
 

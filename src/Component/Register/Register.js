@@ -1,9 +1,14 @@
 import React, { useContext }  from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate,} from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext,  } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
     const {createUser,updateNamePhoto} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
 
     const handleSignUp = (e) => {
         e.preventDefault()
@@ -13,13 +18,19 @@ const Register = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         
+        
       
 
         createUser(email, password)
             .then(res => {
                 const user = res.user
                 console.log(user);
-                alert('sign up succesful')
+                Swal.fire(
+                    'Good job!',
+                    'Registation Succesfull!',
+                    'success'
+                  )
+                  navigate(from,{replace: true})
                 updateNamePhoto(name, photo)
                 .then( res => console.log('display uppdates'))
                 .catch( err => console.log(err))

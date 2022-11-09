@@ -16,6 +16,11 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+
+    const googlesignIn =()=> {
+        setLoading(true)
+        return  signInWithPopup(auth, googleProvider)
+    }
     
     const updateNamePhoto =(displayName, photoURL)=> {
         setLoading(true)
@@ -34,10 +39,7 @@ const AuthProvider = ({children}) => {
             return signOut(auth)
         }
 
-        const googlesignIn =()=> {
-            setLoading(true)
-            return  signInWithPopup(auth, googleProvider)
-        }
+        
         
       
    

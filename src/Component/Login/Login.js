@@ -1,10 +1,14 @@
 import { data } from 'autoprefixer';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const {logIn,googlesignIn} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogIn = (e) => {
         e.preventDefault()
@@ -15,13 +19,30 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
+            Swal.fire(
+                'Good job!',
+                'Log In Succesfull!',
+                'success'
+              )
+            navigate(from, { replace: true })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err);
+        })
     }
     const handleGoogleSingIn = ()=>{
         googlesignIn()
-        .then(res => console.log(res.user))
-        .catch(data => console.log(data))
+        .then(res => {
+            console.log(res.user)
+            Swal.fire(
+                'Good job!',
+                'Log In Succesfull!',
+                'success'
+              )
+            navigate(from, { replace: true })
+            
+        })
+        .catch(err => console.log(err))
     }
     return (
         <div>
@@ -52,9 +73,9 @@ const Login = () => {
                             <input className='btn' type="submit" value="LogIn" />
                         </div>
                         <p className='text-center'>New to Our Website? <Link className='text-orange-500 font-bold' to='/register'>Sign Up</Link></p>
-                        <button onClick={handleGoogleSingIn} className='btn btn-primary text-center my-10'>LogIn With Google</button>
+                        
                     </form>
-                    
+                    <button onClick={handleGoogleSingIn} className='btn btn-primary text-center my-10 mx-8'>LogIn With Google</button>
                     </div>
                 </div>
             </div>
