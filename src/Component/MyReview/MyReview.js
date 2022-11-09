@@ -9,13 +9,13 @@ const MyReview = () => {
     const [myReview, setMyReview] = useState([])
 
     useEffect(()=> {
-        fetch(`http://localhost:5000/review?email=${user?.email}`)
+        fetch(`https://assignment-eleven-server-five.vercel.app/review?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setMyReview(data))
     },[user?.email])
 
     const handleDelete =(id)=> {
-        fetch(`http://localhost:5000/review/${id}`,{
+        fetch(`https://assignment-eleven-server-five.vercel.app/review/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

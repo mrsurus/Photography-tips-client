@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import ReviewSection from './ReviewSection';
@@ -12,7 +13,7 @@ const CardDetails = () => {
     
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/review?service=${_id}`)
+        fetch(`https://assignment-eleven-server-five.vercel.app/review?service=${_id}`)
         .then(res => res.json())
         .then(data => setReviewes(data))
     },[up])
@@ -35,7 +36,7 @@ const CardDetails = () => {
             photo
         }
         
-        fetch('http://localhost:5000/review', {
+        fetch('https://assignment-eleven-server-five.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -59,7 +60,7 @@ const CardDetails = () => {
                     <p>Price:  <span className='font-bold text-xl'>{price}$</span></p>
                     <p>Rating: <span className='font-bold text-xl'>{rating}</span></p>
                 </div>
-                <figure><img src={img} alt="Soes" /></figure>
+               <PhotoProvider><PhotoView src={img}><img src={img} alt="Soes" /></PhotoView></PhotoProvider> 
             </div>
             <section className='mt-24'>
                 <p className=' font-extrabold text-5xl'>Review for this service</p>
