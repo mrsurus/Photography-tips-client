@@ -2,8 +2,6 @@ import { data } from 'autoprefixer';
 import React, { useState } from 'react';
 
 const AddService = () => {
-    const [info , setInfo]= useState({})
-    console.log(info);
 
     const handleAddService =(e)=>{
         e.preventDefault()
@@ -13,7 +11,13 @@ const AddService = () => {
         const price = form.price.value;
         const rating = form.rating.value;
         const img = form.img.value;
-        setInfo({ title,details, price,rating,img})
+        const info ={
+             title:title,
+             details:details,
+              price:price,
+              rating:rating,
+              img:img
+            }
 
         fetch(`http://localhost:5000/allservices`,{
             method:'POST',
@@ -33,15 +37,15 @@ const AddService = () => {
             <p className='text-center text-3xl'>Add A Service To The List</p>
             <form onSubmit={handleAddService}>
                 <p className='text-xl'>Title:</p>
-                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Title' name="title"  id="" />
+                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Title' name="title"  id="" required/>
                 <p className='text-xl'>Details:</p>
-                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Details' name="details" id="" />
+                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Details' name="details" id="" required/>
                 <p className='text-xl'>Price:</p>
-                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Price' name="price" id="" />
+                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Price' name="price" id="" required/>
                 <p className='text-xl'>Rating:</p>
-                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Rating' name="rating" id="" />
+                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Rating' name="rating" id="" required/>
                 <p className='text-xl'>Image URL</p>
-                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Image URL' name="img" id="" />
+                <input type="text" className='input input-bordered w-full mb-3 ' placeholder='Image URL' name="img" id="" required/>
                 <input type="submit" name="" className='btn btn-primary my-10' value='Add To Services' id="" />
             </form>
         </div>
