@@ -10,6 +10,7 @@ const MyReview = () => {
     const [myReview, setMyReview] = useState([])
     useTitle('My-Review')
 
+    //jwt token send and get data
     useEffect(()=> {
         fetch(`http://localhost:5000/review?email=${user?.email}`,{
             headers:{

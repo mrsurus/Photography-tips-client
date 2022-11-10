@@ -41,7 +41,8 @@ const Login = () => {
                 console.log(err);
             })
     }
-
+            //google log In
+            
     const handleGoogleSingIn = () => {
         googlesignIn()
             .then(res => {
