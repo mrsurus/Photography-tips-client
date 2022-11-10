@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServiceCard from '../../shared/ServiceCard/ServiceCard';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Allservices = () => {
     const {loading,setLoading} = useContext(AuthContext)
     const services = useLoaderData()
+    useTitle('Allservices')
      
     if(services.length === 0){
         setLoading(true)

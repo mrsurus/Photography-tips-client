@@ -1,8 +1,10 @@
 import { data } from 'autoprefixer';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
+    useTitle('Add-Service')
 
     const handleAddService =(e)=>{
         e.preventDefault()

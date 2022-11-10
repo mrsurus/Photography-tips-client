@@ -1,22 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import ReviewSection from './ReviewSection';
 
 const CardDetails = () => {
     const services = useLoaderData()
     const { title, details, img, _id, price, rating } = services
-    const { user } = useContext(AuthContext)
-    const [reviewes, setReviewes] = useState()
+    const { user,logOut } = useContext(AuthContext)
+    const [reviewes, setReviewes] = useState([])
     const [up , setUp] = useState(true)
-    
+    useTitle('Card-Details')
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/review?service=${_id}`)
+        fetch(`http://localhost:5000/reviews?service=${_id}`)
         .then(res => res.json())
         .then(data => setReviewes(data))
-    },[up])
+    },[up, _id,logOut])
 
     const handlePlaceOrder = (event) => {
         setUp(!up)

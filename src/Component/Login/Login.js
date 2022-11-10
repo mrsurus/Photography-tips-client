@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 import { setAuthToken } from '../Api/Auth';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
@@ -11,6 +12,7 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'
+    useTitle('Log In')
 
     if (loading) {
         return <div className="flex justify-center items-center my-48">

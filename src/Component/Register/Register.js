@@ -1,6 +1,7 @@
 import React, { useContext }  from 'react';
 import { Link, Navigate, useLocation, useNavigate,} from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 import { setAuthToken } from '../Api/Auth';
 import { AuthContext,  } from '../Context/AuthProvider/AuthProvider';
 
@@ -9,7 +10,8 @@ const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-
+    useTitle('Register')
+    
     if (loading) {
         return <div className="flex justify-center items-center my-96">
             <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">

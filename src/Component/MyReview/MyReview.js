@@ -1,12 +1,14 @@
 import { data } from 'autoprefixer';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewSection from './MyReviewSection';
 
 const MyReview = () => {
     const {user,logOut} = useContext(AuthContext)
     const [myReview, setMyReview] = useState([])
+    useTitle('My-Review')
 
     useEffect(()=> {
         fetch(`http://localhost:5000/review?email=${user?.email}`,{
@@ -21,7 +23,7 @@ const MyReview = () => {
              return res.json()
             })
         .then(data => setMyReview(data))
-    },[user?.email])
+    },[user?.email, logOut])
 
     const handleDelete =(id)=> {
         fetch(`http://localhost:5000/review/${id}`,{
