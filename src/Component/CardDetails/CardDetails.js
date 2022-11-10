@@ -14,7 +14,7 @@ const CardDetails = () => {
     useTitle('Card-Details')
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews?service=${_id}`)
+        fetch(`https://assignment-eleven-server-five.vercel.app/reviews?service=${_id}`)
         .then(res => res.json())
         .then(data => setReviewes(data))
     },[up, _id,logOut])
@@ -40,7 +40,7 @@ const CardDetails = () => {
             date
         }
         
-        fetch('http://localhost:5000/review', {
+        fetch('https://assignment-eleven-server-five.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

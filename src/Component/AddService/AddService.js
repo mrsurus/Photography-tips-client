@@ -22,7 +22,7 @@ const AddService = () => {
               img:img
             }
 
-        fetch(`http://localhost:5000/allservices`,{
+        fetch(`https://assignment-eleven-server-five.vercel.app/allservices`,{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

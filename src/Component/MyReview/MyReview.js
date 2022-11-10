@@ -12,7 +12,7 @@ const MyReview = () => {
 
     //jwt token send and get data
     useEffect(()=> {
-        fetch(`http://localhost:5000/review?email=${user?.email}`,{
+        fetch(`https://assignment-eleven-server-five.vercel.app/review?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('genious-token')} `
             }
@@ -27,7 +27,7 @@ const MyReview = () => {
     },[user?.email, logOut])
 
     const handleDelete =(id)=> {
-        fetch(`http://localhost:5000/review/${id}`,{
+        fetch(`https://assignment-eleven-server-five.vercel.app/review/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())
