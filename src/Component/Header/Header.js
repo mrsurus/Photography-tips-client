@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaCamera } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
@@ -29,6 +30,7 @@ const Header = () => {
                        }
                     </ul>
                 </div>
+                <FaCamera className='text-yellow-400 text-3xl ml-10'></FaCamera>
                 <p className="btn btn-ghost text-white font-extrabold text-3xl">Photo Tips</p>
             </div>
             <div className="navbar-center hidden lg:flex">

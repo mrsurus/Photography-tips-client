@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link, useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../shared/ServiceCard/ServiceCard';
 import Banner from './Banner';
@@ -6,10 +6,14 @@ import Exsection from './Exsection';
 
 const Home = () => {
     const services = useLoaderData()
+  
+
+
     return (
         <div className=' mx-16'>
+            <img src="../../../public/logo192.png" alt="" />
             <Banner></Banner>
-            <p className='text-center my-10 text-3xl font-bold bg-sky-200'>List Of Our Services</p>
+            <p className='text-center my-10 text-3xl font-bold bg-sky-200'>List Of My Services</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 '>
                 {
                     services.map(service => <ServiceCard

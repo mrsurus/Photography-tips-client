@@ -4,11 +4,18 @@ import Swal from 'sweetalert2';
 import { AuthContext,  } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser,updateNamePhoto} = useContext(AuthContext)
+    const {createUser,updateNamePhoto, loading} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
 
+    if (loading) {
+        return <div class="flex justify-center items-center mt-96">
+            <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
 
     const handleSignUp = (e) => {
         e.preventDefault()

@@ -63,7 +63,10 @@ const CardDetails = () => {
                <PhotoProvider><PhotoView src={img}><img src={img} alt="Soes" /></PhotoView></PhotoProvider> 
             </div>
             <section className='mt-24'>
-                <p className=' font-extrabold text-5xl'>Review for this service</p>
+                {
+                    reviewes?.length? <p className=' font-extrabold text-5xl'>Review for this service</p> :
+                    <p className=' font-extrabold text-5xl'>There is no review for this service</p>
+                }
                 <div className='my-5 py-5 '>
                     {
                         reviewes?.map(reviews => <ReviewSection
@@ -79,7 +82,7 @@ const CardDetails = () => {
                         <input name='email' type="text" value={user?.displayName? user.displayName:''} placeholder="Your Email" className="input input-bordered w-full " readOnly />
                     </div>
                     <textarea name='review' className='textarea textarea-bordered my-5 h-48 text-xl w-full' placeholder='Write your review here ...'></textarea>
-                    <input className='btn btn-primary ' type="submit" name="" value='Submit Your review' />
+                    <input className='btn btn-primary mb-10 ' type="submit" name="" value='Submit Your review' />
                 </form></> :
 
                     <p className='text-3xl text-center '>Want to give review? please <Link to='/login' className='btn'>Log In</Link> </p>
