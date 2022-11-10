@@ -13,7 +13,7 @@ const CardDetails = () => {
     
 
     useEffect(()=>{
-        fetch(`https://assignment-eleven-server-five.vercel.app/review?service=${_id}`)
+        fetch(`http://localhost:5000/review?service=${_id}`)
         .then(res => res.json())
         .then(data => setReviewes(data))
     },[up])
@@ -36,7 +36,7 @@ const CardDetails = () => {
             photo
         }
         
-        fetch('https://assignment-eleven-server-five.vercel.app/review', {
+        fetch('http://localhost:5000/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

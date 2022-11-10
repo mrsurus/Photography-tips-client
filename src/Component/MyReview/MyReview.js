@@ -5,17 +5,26 @@ import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 import MyReviewSection from './MyReviewSection';
 
 const MyReview = () => {
-    const {user} = useContext(AuthContext)
+    const {user,logOut} = useContext(AuthContext)
     const [myReview, setMyReview] = useState([])
 
     useEffect(()=> {
-        fetch(`https://assignment-eleven-server-five.vercel.app/review?email=${user?.email}`)
-        .then(res => res.json())
+        fetch(`http://localhost:5000/review?email=${user?.email}`,{
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('genious-token')} `
+            }
+        })
+        .then(res =>{
+            if(res.status === 401 || res.status === 403 ){
+                logOut()
+            }
+             return res.json()
+            })
         .then(data => setMyReview(data))
     },[user?.email])
 
     const handleDelete =(id)=> {
-        fetch(`https://assignment-eleven-server-five.vercel.app/review/${id}`,{
+        fetch(`http://localhost:5000/review/${id}`,{
             method: 'DELETE'
         })
         .then(res => res.json())

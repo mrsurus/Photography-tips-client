@@ -16,7 +16,7 @@ const UpdateReview = () => {
             review:review
         }
         setEditedReview(data)
-        fetch(`https://assignment-eleven-server-five.vercel.app/review/${storedReview._id}`,{
+        fetch(`http://localhost:5000/review/${storedReview._id}`,{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

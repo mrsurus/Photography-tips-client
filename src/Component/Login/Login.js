@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { setAuthToken } from '../Api/Auth';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -12,9 +13,9 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/'
 
     if (loading) {
-        return <div class="flex justify-center items-center mt-96">
-            <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-                <span class="visually-hidden">Loading...</span>
+        return <div className="flex justify-center items-center my-48">
+            <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                <span className="visually-hidden">Loading...</span>
             </div>
         </div>
     }
@@ -26,7 +27,7 @@ const Login = () => {
         logIn(email, password)
             .then(res => {
                 const user = res.user;
-                console.log(user);
+                setAuthToken(user)
                 Swal.fire(
                     'Good job!',
                     'Log In Succesfull!',
@@ -38,10 +39,12 @@ const Login = () => {
                 console.log(err);
             })
     }
+
     const handleGoogleSingIn = () => {
         googlesignIn()
             .then(res => {
-                console.log(res.user)
+                const user = res.user
+                setAuthToken(user)
                 Swal.fire(
                     'Good job!',
                     'Log In Succesfull!',
