@@ -19,7 +19,7 @@ const CardDetails = () => {
         .then(data => setReviewes(data))
     },[up, _id,logOut])
 
-    const handlePlaceOrder = (event) => {
+    const handlePlaceReview = (event) => {
         setUp(!up)
         event.preventDefault();
         const form = event.target
@@ -27,6 +27,8 @@ const CardDetails = () => {
         const review = form.review.value
         const name = user?.displayName || 'no name'
         const photo = user?.photoURL || 'no Photo'
+        const date = new Date()
+        
 
         const reviewInfo = {
             service: _id,
@@ -34,7 +36,8 @@ const CardDetails = () => {
             name,
             email,
             review,
-            photo
+            photo,
+            date
         }
         
         fetch('http://localhost:5000/review', {
@@ -77,7 +80,7 @@ const CardDetails = () => {
                         </ReviewSection> )
                     }
                 </div>
-                {user?.email ? <> <form onSubmit={handlePlaceOrder}>
+                {user?.email ? <> <form onSubmit={handlePlaceReview}>
                     <h2 className='text-2 xl font-semibold text-center mt-10'>Write review for {title}</h2>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 py-5'>
                         <input name='email' type="text" value={user?.displayName? user.displayName:''} placeholder="Your Email" className="input input-bordered w-full " readOnly />
