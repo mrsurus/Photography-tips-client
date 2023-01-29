@@ -1,5 +1,5 @@
 import { data } from 'autoprefixer';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -8,12 +8,13 @@ import { setAuthToken } from '../Api/Auth';
 import { AuthContext } from '../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { logIn, googlesignIn, loading } = useContext(AuthContext)
+    const { logIn, googlesignIn, loading,setLoading } = useContext(AuthContext)
+    const [error, setError] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || '/'
     useTitle('Log In')
-
+console.log(error);
     if (loading) {
         return <div className="flex justify-center items-center my-48">
             <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
@@ -36,13 +37,16 @@ const Login = () => {
                     'success'
                 )
                 navigate(from, { replace: true })
+                setError('')
             })
             .catch(err => {
+                setLoading(false)
+                setError(err.message)
                 console.log(err);
             })
     }
             //google log In
-            
+
     const handleGoogleSingIn = () => {
         googlesignIn()
             .then(res => {
@@ -80,7 +84,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <p className='text-red-500'>{error}</p>
                                 </label>
                             </div>
                             <div className="form-control mt-6">

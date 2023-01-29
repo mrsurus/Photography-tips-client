@@ -1,4 +1,4 @@
-import React, { useContext }  from 'react';
+import React, { useContext, useState }  from 'react';
 import { Link, Navigate, useLocation, useNavigate,} from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useTitle from '../../hooks/useTitle';
@@ -6,12 +6,13 @@ import { setAuthToken } from '../Api/Auth';
 import { AuthContext,  } from '../Context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser,updateNamePhoto, loading} = useContext(AuthContext)
+    const {createUser,updateNamePhoto, loading,setLoading} = useContext(AuthContext)
+    const [error, setError] = useState('')
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
     useTitle('Register')
-    
+
     if (loading) {
         return <div className="flex justify-center items-center my-96">
             <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
@@ -45,7 +46,11 @@ const Register = () => {
                 .then( res => console.log('display uppdates'))
                 .catch( err => console.log(err))
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setLoading(false)
+                setError(err.message)
+                console.log(err)
+            })
     }
 
     return (
@@ -87,6 +92,7 @@ const Register = () => {
                             <input className='btn' type="submit" value="Sign Up" />
                         </div>
                     </form>
+                    <p className='text-red-500'>{error}</p>
                     <p className='text-center'>Already have an account? <Link className='text-orange-500 font-bold' to='/login'>Log In</Link></p>
                 </div>
                 </div>

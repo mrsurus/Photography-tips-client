@@ -48,7 +48,7 @@ const MyReview = () => {
 
     return (
         <div>
-            {myReview.length?  <p className='text-center text-3xl mt-5 font-bold'>You added {myReview.length} reviews</p>: <p className='text-center text-3xl mt-5 font-bold'>No review were added</p> }
+            {myReview.length?  <p className='text-center text-3xl mt-5 font-bold'>You added {myReview.length} reviews</p>: <p className='text-center text-3xl mt-5 font-bold my-24 py-24 '>No review were added by you</p> }
             <div>
                 {
                     myReview?.map(mr => <MyReviewSection

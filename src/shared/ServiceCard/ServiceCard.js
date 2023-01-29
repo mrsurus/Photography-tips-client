@@ -6,8 +6,8 @@ const ServiceCard = ({ service }) => {
     const { title, details, img,_id,price } = service;
     return (
         <div>
-            <div className="card card-compact w-25 bg-base-100 shadow-xl">
-            <PhotoProvider><PhotoView src={img}><img src={img} alt="Photo" /></PhotoView></PhotoProvider>
+            <div className="card card-compact w-25 bg-base-100 shadow-xl h-full">
+                <PhotoProvider><PhotoView src={img}><img src={img} alt="Photo"  /></PhotoView></PhotoProvider>
                 <div className="card-body">
                     <h2 className="card-title ">{title}!</h2>
                     <p>Price: {price}$</p>
